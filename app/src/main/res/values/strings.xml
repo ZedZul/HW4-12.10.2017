@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">HW4-12.10.2017</string>
+    <string name="app_name">HW4–12.10.2017</string>
+    <string name="solve_it_str_res">Solve it</string>
+    <string name="input_field_str_res">Input field</string>
+    <string name="view_last_added_user">VIEW LAST ADDED USER</string>
+    <string name="user_id_str">USER ID</string>
+    <string name="user_name_hint">USER NAME</string>
+    <string name="avatar_url_hint">AVATAR URL</string>
+    <string name="download_str">Download</string>
+    <string name="upload_str">Upload</string>
 </resources>
