@@ -36,6 +36,7 @@ appengine {
         oauth2 = true
     }
     endpoints {
+        googleClientVersion = '1.23.0'
         getClientLibsOnBuild = true
         getDiscoveryDocsOnBuild = true
     }
