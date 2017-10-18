@@ -4,27 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:style="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".MainActivity"
     android:weightSum="1">
 
     <EditText
-        android:id="@+id/user_id_edit_text"
+        android:id="@+id/user_name_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/user_name_hint"
         android:textSize="13pt"/>
 
     <EditText
-        android:id="@+id/user_name_edit_text"
+        android:id="@+id/user_avatar_url_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/avatar_url_hint"
-        android:textSize="13pt"/>
+        android:textSize="13pt"
+        android:inputType="textUri"/>
 
     <CalendarView
-        android:id="@+id/calendarView2"
+        android:id="@+id/user_date_of_birth_calendar_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -48,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/upload_str"
+            android:enabled="false"
             style = "?android:borderlessButtonStyle"
             android:textSize="13pt"/>
     </LinearLayout>

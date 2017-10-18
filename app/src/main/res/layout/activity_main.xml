@@ -29,28 +29,5 @@
         android:layout_height="wrap_content"
         android:textSize="14pt"/>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/view_last_added_user"
-        android:textSize="14pt"/>
-
-    <EditText
-        android:id="@+id/user_id_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/input_field_str_res"
-
-        android:textSize="14pt"/>
-
-    <EditText
-        android:id="@+id/user_name_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/input_field_str_res"
-
-        android:textSize="14pt"/>
-
 
 </LinearLayout>
