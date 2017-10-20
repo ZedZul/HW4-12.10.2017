@@ -76,7 +76,8 @@ public class UserEndpoint {
      * Inserts a new {@code User}.
      */
     @ApiMethod(
-            name = "insert")
+            name = "insert",
+            httpMethod = ApiMethod.HttpMethod.POST)
     public void insert(@Named("mName") final String name, @Named("mAvatarUrl") final String avatarUrl, @Named("mDateOfBirth") final String dob) {
         // Typically in a RESTful API a POST does not have a known ID (assuming the ID is used in the resource path).
         // You should validate that user.mId has not been set. If the ID type is not supported by the
@@ -127,7 +128,7 @@ public class UserEndpoint {
             path = "user/{mId}",
             httpMethod = ApiMethod.HttpMethod.PUT)
     public User update(@Named("mId") final long mId, final User user) throws NotFoundException {
-        // TODO: You should validate your ID parameter against your resource's ID here.
+
         checkExists(mId);
         ofy().save().entity(user).now();
         logger.info("Updated User: " + user);
@@ -171,7 +172,7 @@ public class UserEndpoint {
             query = query.startAt(Cursor.fromWebSafeString(cursor));
         }
         final QueryResultIterator<User> queryIterator = query.iterator();
-        final List<User> userList = new ArrayList<User>(limit);
+        final List<User> userList = new ArrayList<>(limit);
         while (queryIterator.hasNext()) {
             userList.add(queryIterator.next());
         }

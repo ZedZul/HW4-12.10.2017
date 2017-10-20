@@ -6,7 +6,7 @@ import com.googlecode.objectify.annotation.Id;
 import java.util.Date;
 
 @Entity
-public class User {
+class User {
 
     @Id
     private long mId;
@@ -18,7 +18,7 @@ public class User {
     public User() {
     }
 
-    public User(final long pId, final String pName, final String pAvatar_url, final long pDateOfBirth) {
+    User(final long pId, final String pName, final String pAvatar_url, final long pDateOfBirth) {
         mId = pId;
         mName = pName;
         mAvatarUrl = pAvatar_url;
@@ -33,8 +33,8 @@ public class User {
         return mName;
     }
 
-    public Date getDateOfBirth() throws Exception {
-        return new Date(mDateOfBirth);
+    public long getDateOfBirth() throws Exception {
+        return mDateOfBirth;
     }
 
     public String getAvatarUrl() {

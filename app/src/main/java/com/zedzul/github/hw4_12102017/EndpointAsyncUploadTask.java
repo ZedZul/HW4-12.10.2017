@@ -15,8 +15,8 @@ import java.io.IOException;
 
 class EndpointAsyncUploadTask extends AsyncTask<Pair<Context, String>, Void, String> {
 
-    public static final String USER_ADDED = "USER ADDED";
-    private UserApi myApiService = null;
+    private static final String USER_ADDED = "USER ADDED";
+    private UserApi myApiService;
 
     @SafeVarargs
     @Override
@@ -39,8 +39,7 @@ class EndpointAsyncUploadTask extends AsyncTask<Pair<Context, String>, Void, Str
 
             myApiService = builder.build();
         }
-
-        String result = "";
+        
         try {
             myApiService.insert(params[0].second,params[1].second,params[2].second).execute();
         } catch (final IOException e) {

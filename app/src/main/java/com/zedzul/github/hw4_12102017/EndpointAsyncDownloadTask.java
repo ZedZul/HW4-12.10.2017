@@ -2,6 +2,7 @@ package com.zedzul.github.hw4_12102017;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.util.Pair;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -20,7 +21,7 @@ import java.util.List;
 class EndpointAsyncDownloadTask extends AsyncTask<Pair<Context, String>, Void, String> {
 
     private static final String NO_DATA = "No data";
-    private UserApi myApiService = null;
+    private UserApi myApiService;
 
     @SafeVarargs
     @Override
@@ -52,10 +53,11 @@ class EndpointAsyncDownloadTask extends AsyncTask<Pair<Context, String>, Void, S
             }
 
             try {
+                if(users != null)
                 result = new JSONObject()
                         .put("name", users.get(users.size() - 1).getName())
                         .put("avatar_url", users.get(users.size() - 1).getAvatarUrl())
-                        .put("dob", users.get(users.size() - 1).getDateOfBirth().getValue())
+                        .put("dob", String.valueOf(users.get(users.size() - 1).getDateOfBirth()))
                         .toString();
             } catch (final JSONException pE) {
                 result = pE.getMessage();

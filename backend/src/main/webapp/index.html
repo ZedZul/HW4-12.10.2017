@@ -51,8 +51,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1>Hello, Endpoints!</h1>
-                <p>Enter your name and press the button below to call your Google Cloud Endpoints
-                    API.</p>
+                <p>Enter name, avatar url and date of birth</p>
                 <form>
                     <div class="input-group">
                         <input type="text" class="form-control input-lg" placeholder="Name"
@@ -74,6 +73,27 @@
                     <a href="/_ah/api/userApi/v1/user/1">First user</a>.<br/>
                 </p>
             </div>
+
+            <div class="col-lg-12">
+                <h1>Last user</h1>
+                <form>
+                    <div class="input-group">
+                        <input type="text" class="form-control input-lg" placeholder="Name"
+                               id="nameOutput"/>
+                        <input type="text" class="form-control input-lg" placeholder="Avatar url"
+                               id="avatarUrlOutput"/>
+                        <input type="text" class="form-control input-lg"
+                               placeholder="Date of birth: 24.05.1994"
+                               id="dobOutput"/>
+
+                        <button class="btn btn-default btn-primary btn-group btn-lg"
+                                type="submit" id="lastUserViewButton">View last user</button>
+
+                    </div>
+                </form>
+                <br/>
+            </div>
+
         </div>
     </div>
 </div>
@@ -93,13 +113,31 @@
 
             if (!response.error) {
               outputAlertDiv.className = 'alert alert-success';
-              outputAlertDiv.innerHTML = '<h2>' User added '</h2>';
+              outputAlertDiv.innerHTML = '<h2>' + 'Without error' +'</h2>';
             }
             else if (response.error) {
               outputAlertDiv.className = 'alert alert-danger';
               outputAlertDiv.innerHTML = '<b>Error Code: </b>' + ' [' + response.error.message + ']';
             }
           }
+        );
+        return false;
+      }
+    }
+    //view last user function
+    function enableClick2() {
+
+      document.getElementById('lastUserViewButton').onclick = function() {
+        gapi.client.userApi.number().execute(
+            function(response){
+                gapi.client.userApi.get({'mId': response.result.data - 1}).execute(
+                    function(response){
+                         document.getElementById('nameOutput').value = response.result.name;
+                         document.getElementById('avatarUrlOutput').value = response.avatarUrl;
+                         document.getElementById('dobOutput').value = new Date(response.dateOfBirth*1).toDateString();
+                        }
+                );
+            }
         );
         return false;
       }
@@ -117,6 +155,7 @@
       }
       var callback = function() {
         enableClick();
+        enableClick2();
       }
       gapi.client.load(apiName, apiVersion, callback, apiRoot);
     }
